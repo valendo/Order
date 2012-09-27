@@ -1,0 +1,73 @@
+@model IEnumerable<Order.Models.Menu>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Menu List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+        <th>
+            DayOfWeek
+        </th>
+        <th>
+            Price
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+        <td>
+			@item.Name
+        </td>
+        <td>
+            @if (item.DayOfWeek == 0)
+            {
+                <span>Sunday</span>
+            }
+            else if (item.DayOfWeek == 1)
+            {
+                <span>Monday</span>
+            }
+			else if (item.DayOfWeek == 2)
+            {
+                <span>Tuesday</span>
+            }
+            else if (item.DayOfWeek == 3)
+            {
+                <span>Wednesday</span>
+            }
+            else if (item.DayOfWeek == 4)
+            {
+                <span>Thursday</span>
+            }
+            else if (item.DayOfWeek == 5)
+            {
+                <span>Friday</span>
+            }
+            else if (item.DayOfWeek == 6)
+            {
+                <span>Saturday</span>
+            }
+        </td>
+        <td>
+			@String.Format("{0:F}", item.Price)
+        </td>
+    </tr>
+}
+
+</table>
+
+

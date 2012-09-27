@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Order.Models.Menu>
+
+@{
+    ViewBag.Title = "Order food online";
+}
+
+<h2>@ViewBag.Message</h2>
+<div class="main_content">
+    <div class="menu_list">
+        <div class="heading">Menu</div>
+        <table>
+            <tbody data-bind="foreach: menus">
+                <tr>
+                    <td>
+			            <span data-bind="text: $index() + 1"></span>
+                    </td>
+                    <td>
+			            <span data-bind="text: Name"></span>
+                    </td>
+                    <td>
+			            <span data-bind="text: Price"></span>
+                    </td>
+                    <td>
+                        <div class="select" data-bind="click: $root.order" title="Order"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="saperator"></div>
+    <div class="order_menu">
+        <div class="heading">Orders</div>
+        <table>
+            <tbody data-bind="foreach: selectedMenus">
+                <tr>
+                    <td>
+			            (<span data-bind="text: Count"></span>) <span data-bind="text: Name"></span>
+                    </td>
+                    <td>
+                        <div class="remove" data-bind="click: $root.remove" title="Remove"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="quantity" data-bind="visible: total() > 0,text: 'Quantiy: ' + total()"></div>
+        <div class="total" data-bind="visible: total() > 0,text: 'Total: ' + amount()"></div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="saperator_end"></div>
+
+<script src="@Url.Content("~/Scripts/myScript.js")" type="text/javascript"></script>
