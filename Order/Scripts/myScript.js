@@ -8,13 +8,15 @@ function orderViewModel() {
     var self = this;
     self.menus = ko.observableArray();
     self.selectedMenus = ko.observableArray();
-
+    self.orderDetails = ko.observableArray();
+    
     $.ajax({
         type: "GET",
         url: "home/menus/",
         dataType: "json",
         success: function (json) {
             self.menus(json);
+            $("#loading").hide();
         }
     });
     $.ajax({
@@ -25,29 +27,75 @@ function orderViewModel() {
             self.selectedMenus(json);
         }
     });
+    $.ajax({
+        type: "GET",
+        url: "home/orderdetail/",
+        dataType: "json",
+        success: function (json) {
+            self.orderDetails(json);
+        }
+    });
 
     self.order = function (item) {
-        self.selectedMenus().clear;
-        $.ajax({
-            type: "GET",
-            data: { MenuID: item.ID },
-            url: "home/order",
-            dataType: "json",
-            success: function (json) {
-                self.selectedMenus(json);
+        $("#dialog-form").dialog({
+            autoOpen: false,
+            height: 200,
+            width: 300,
+            modal: true,
+            buttons: {
+                "OK": function () {
+                    if ($("#nameForm").valid()) {
+                        var name = $("#name").val();
+                        self.selectedMenus().clear;
+                        self.orderDetails().clear;
+                        $.ajax({
+                            type: "GET",
+                            data: { MenuID: item.ID, FullName: name },
+                            url: "home/order",
+                            dataType: "json",
+                            success: function (json) {
+                                self.selectedMenus(json);
+                                $.ajax({
+                                    type: "GET",
+                                    url: "home/orderdetail",
+                                    dataType: "json",
+                                    success: function (json) {
+                                        self.orderDetails(json);
+                                    }
+                                });
+                                $("#name").val('');
+                            }
+                        });
+                        
+                        $(this).dialog("close");
+                    }
+                },
+                Cancel: function () {
+                    $(this).dialog("close");
+                }
             }
         });
+        $("#dialog-form").dialog("open");
     };
 
     self.remove = function (item) {
         self.selectedMenus().clear;
+        self.orderDetails().clear;
         $.ajax({
             type: "GET",
-            data: { MenuID: item.MenuID },
+            data: { ID: item.ID },
             url: "home/remove",
             dataType: "json",
             success: function (json) {
                 self.selectedMenus(json);
+                $.ajax({
+                    type: "GET",
+                    url: "home/orderdetail",
+                    dataType: "json",
+                    success: function (json) {
+                        self.orderDetails(json);
+                    }
+                });
             }
         });
     };
@@ -75,6 +123,14 @@ function orderViewModel() {
             dataType: "json",
             success: function (json) {
                 self.selectedMenus(json);
+                $.ajax({
+                    type: "GET",
+                    url: "home/orderdetail",
+                    dataType: "json",
+                    success: function (json) {
+                        self.orderDetails(json);
+                    }
+                });
             }
         });
     }, 10000);

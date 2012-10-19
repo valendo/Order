@@ -7,8 +7,9 @@
 <h2>@ViewBag.Message</h2>
 <div class="main_content">
     <div class="menu_list">
+        <div id="loading"><img src="@Url.Content("~/Content/images/ajax-loader.gif")" /></div>
         <div class="heading">Menu</div>
-        <table>
+        <table width="100%">
             <tbody data-bind="foreach: menus">
                 <tr>
                     <td>
@@ -21,23 +22,21 @@
 			            <span data-bind="text: Price"></span>
                     </td>
                     <td>
-                        <div class="select" data-bind="click: $root.order" title="Order"></div>
+                        <div id="order" class="select" data-bind="click: $root.order" title="Order"></div>
                     </td>
                 </tr>
             </tbody>
         </table>
+        
     </div>
     <div class="saperator"></div>
     <div class="order_menu">
-        <div class="heading">Orders</div>
-        <table>
+        <div data-bind="visible: total() > 0" class="heading">Orders</div>
+        <table width="100%">
             <tbody data-bind="foreach: selectedMenus">
                 <tr>
                     <td>
 			            (<span data-bind="text: Count"></span>) <span data-bind="text: Name"></span>
-                    </td>
-                    <td>
-                        <div class="remove" data-bind="click: $root.remove" title="Remove"></div>
                     </td>
                 </tr>
             </tbody>
@@ -45,9 +44,58 @@
         <div class="quantity" data-bind="visible: total() > 0,text: 'Quantiy: ' + total()"></div>
         <div class="total" data-bind="visible: total() > 0,text: 'Total: ' + amount()"></div>
         <div class="clear"></div>
+        <br /><br />
+        <div data-bind="visible: total() > 0" class="heading">Details</div>
+        <table width="100%">
+            <tbody data-bind="foreach: orderDetails">
+                <tr>
+                    <td>
+			            <span data-bind="text: FullName"></span>
+                    </td>
+                    <td>
+                        <span data-bind="text: Name"></span>
+                    </td>
+                    <td>
+                        <span data-bind="text: Price"></span>
+                    </td>
+                    <td>
+                        <div class="remove" data-bind="click: $root.remove" title="Remove"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <div class="clear"></div>
 </div>
 <div class="saperator_end"></div>
+
+<div id="dialog-form" title="Message">
+    <form id="nameForm" method="post">
+        <br /><br />
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" class="required" />
+        
+    </form>
+</div>
+
+
+
+<script type="text/javascript">
+    jQuery.extend(jQuery.validator.messages, {
+        required: "Please input your name."
+    });
+    $('#dialog-form').live('keyup', function (e) {
+        if (e.keyCode == $.ui.keyCode.ENTER) {
+            $(':button:contains("OK")').click();
+        }
+    });
+    $("#dialog-form").dialog({ autoOpen: false });
+    $(document).ready(function () {
+        $("#loading").show();
+    })
+    
+</script>
+
+
 
 <script src="@Url.Content("~/Scripts/myScript.js")" type="text/javascript"></script>

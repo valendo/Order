@@ -10,5 +10,6 @@ namespace Order.Models
         public int ID { get; set; }
         public int MenuID { get; set; }
         public DateTime OrderDate { get; set; }
+        public string FullName { get; set; }
     }
 }

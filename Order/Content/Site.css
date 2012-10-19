@@ -7,7 +7,7 @@ body {
     background-color: #660000;
     background:url(/Content/images/bg-body.jpg) repeat;
     font-size: .85em;
-    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    font-family: Helvetica, Verdana, Sans-Serif;
     margin: 0;
     padding: 0;
     color: #696969;
@@ -72,7 +72,7 @@ h5, h6 {
 /* you can specify a greater or lesser percentage for the 
 page width. Or, you can specify an exact pixel width. */
 .page {
-    width: 900px;
+    width: 960px;
     margin-left: auto;
     margin-right: auto;
     position:relative;
@@ -236,7 +236,7 @@ table td {
     padding: 5px 10px;
     border-bottom: 1px dotted #660000;
     color:#660000;
-    font-size:16px;
+    font-size:15px;
     font-weight:bold;
 }
 
@@ -344,11 +344,12 @@ div#title {
 
 .menu_list {
     float: left;
-    width:380px;
+    width:410px;
+    position:relative;
 }
 .order_menu {
     float: right;
-    width:380px;
+    width:410px;
 }
 .main_content {
     min-height:400px;
@@ -396,4 +397,10 @@ div#title {
     text-align:center;
     margin-bottom:10px;
     width:100%;
+}
+#loading {
+    position:absolute;
+    top:100px;
+    left:40%;
+    
 }

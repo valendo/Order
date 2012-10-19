@@ -30,3 +30,4 @@ D:\Order\Order\bin\WebActivator.dll
 D:\Order\Order\bin\EntityFramework.xml
 D:\Order\Order\obj\Debug\Order.dll
 D:\Order\Order\obj\Debug\Order.pdb
+D:\Deploy\Order\Order\obj\Debug\Order.csprojResolveAssemblyReference.cache
