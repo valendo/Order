@@ -115,6 +115,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\bg-body.jpg" />
     <Content Include="Content\images\delete-icon.png" />
     <Content Include="Content\images\heading.jpg" />
