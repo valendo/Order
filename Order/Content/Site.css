@@ -103,6 +103,7 @@ header h1, #header h1 {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+    min-height:500px;
 }
 
 .phone
@@ -403,4 +404,11 @@ div#title {
     top:100px;
     left:40%;
     
+}
+.message {
+    color:#660000;
+    font-weight:bold;
+    font-size:60px;
+    text-align:center;
+    margin-top:100px;
 }
