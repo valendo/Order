@@ -14,6 +14,7 @@ function orderViewModel() {
         type: "GET",
         url: "home/menus/",
         dataType: "json",
+        cache: false,
         success: function (json) {
             self.menus(json);
             $("#loading").hide();
@@ -23,6 +24,7 @@ function orderViewModel() {
         type: "GET",
         url: "home/selectedmenus/",
         dataType: "json",
+        cache: false,
         success: function (json) {
             self.selectedMenus(json);
         }
@@ -31,6 +33,7 @@ function orderViewModel() {
         type: "GET",
         url: "home/orderdetail/",
         dataType: "json",
+        cache: false,
         success: function (json) {
             self.orderDetails(json);
         }
@@ -53,12 +56,14 @@ function orderViewModel() {
                             data: { MenuID: item.ID, FullName: name },
                             url: "home/order",
                             dataType: "json",
+                            cache: false,
                             success: function (json) {
                                 self.selectedMenus(json);
                                 $.ajax({
                                     type: "GET",
                                     url: "home/orderdetail",
                                     dataType: "json",
+                                    cache: false,
                                     success: function (json) {
                                         self.orderDetails(json);
                                     }
@@ -86,12 +91,14 @@ function orderViewModel() {
             data: { ID: item.ID },
             url: "home/remove",
             dataType: "json",
+            cache: false,
             success: function (json) {
                 self.selectedMenus(json);
                 $.ajax({
                     type: "GET",
                     url: "home/orderdetail",
                     dataType: "json",
+                    cache: false,
                     success: function (json) {
                         self.orderDetails(json);
                     }
@@ -121,12 +128,14 @@ function orderViewModel() {
             type: "GET",
             url: "home/selectedmenus/",
             dataType: "json",
+            cache: false,
             success: function (json) {
                 self.selectedMenus(json);
                 $.ajax({
                     type: "GET",
                     url: "home/orderdetail",
                     dataType: "json",
+                    cache: false,
                     success: function (json) {
                         self.orderDetails(json);
                     }

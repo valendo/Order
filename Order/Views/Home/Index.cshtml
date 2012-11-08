@@ -50,7 +50,7 @@
                     </tbody>
                 </table>
                 <div class="quantity" data-bind="visible: total() > 0,text: 'Quantiy: ' + total()"></div>
-                <div class="total" data-bind="visible: total() > 0,text: 'Total: ' + amount()"></div>
+                <div class="total" data-bind="visible: total() > 0,text: 'Total: ' + accounting.formatMoney(amount())"></div>
                 <div class="clear"></div>
                 <br /><br />
                 <div data-bind="visible: total() > 0" class="heading">Details</div>
