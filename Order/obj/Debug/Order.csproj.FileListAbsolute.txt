@@ -47,3 +47,4 @@ D:\Web\Github\Order\Order\bin\WebActivator.dll
 D:\Web\Github\Order\Order\bin\EntityFramework.xml
 D:\Web\Github\Order\Order\obj\Debug\Order.dll
 D:\Web\Github\Order\Order\obj\Debug\Order.pdb
+D:\Web\Github\Order\Order\obj\Debug\Order.csprojResolveAssemblyReference.cache

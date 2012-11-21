@@ -58,7 +58,9 @@
                     <tbody data-bind="foreach: orderDetails">
                         <tr>
                             <td>
-			                    <span data-bind="text: FullName"></span>
+                                <div style="word-wrap:break-word;width:100px;">
+			                        <span data-bind="text: FullName.substring(0, 50)"></span>
+                                </div>
                             </td>
                             <td>
                                 <span data-bind="text: Name"></span>
