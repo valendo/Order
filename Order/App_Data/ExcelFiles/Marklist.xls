@@ -1,0 +1,11 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">ID</th><th scope="col">Name</th><th scope="col">DayOfWeek</th><th scope="col">Price</th>
+		</tr><tr>
+			<td>10</td><td>ca kho to</td><td>1</td><td>25000</td>
+		</tr><tr>
+			<td>11</td><td>ga kho sa</td><td>1</td><td>20000</td>
+		</tr>
+	</table>
+</div>
