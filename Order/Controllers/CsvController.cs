@@ -24,7 +24,7 @@ namespace Order.Controllers
             if (file.ContentLength > 0)
             {
                 var fileName = Path.GetFileName(file.FileName);
-                var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+                var path = Path.Combine(Server.MapPath("~/App_Data"), fileName);
                 if (System.IO.File.Exists(path))
                     System.IO.File.Delete(path);
                 file.SaveAs(path);
